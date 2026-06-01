@@ -1,0 +1,34 @@
+name: CI
+
+# Controla quando o workflow será executado
+on:
+  # Executa em push ou pull request para a branch main
+  push:
+    branches: ["main"]
+
+  pull_request:
+    branches: ["main"]
+
+  # Permite executar manualmente pela aba Actions
+  workflow_dispatch:
+
+# Trabalhos do workflow
+jobs:
+  build:
+    # Sistema operacional do runner
+    runs-on: ubuntu-latest
+
+    # Passos do workflow
+    steps:
+      # Faz checkout do repositório
+      - uses: actions/checkout@v4
+
+      # Executa um comando simples
+      - name: Run a one-line script
+        run: echo "Hello, world!"
+
+      # Executa vários comandos
+      - name: Run a multi-line script
+        run: |
+          echo "Add other actions to build,"
+          echo "test, and deploy your project."
